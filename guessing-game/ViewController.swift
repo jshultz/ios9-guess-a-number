@@ -10,36 +10,38 @@ import UIKit
 
 class ViewController: UIViewController {
     
+
     @IBOutlet weak var answerBox: UILabel!
     
     @IBOutlet weak var inputField: UITextField!
     
-    @IBAction func submitButton(sender: AnyObject) {
+    @IBAction func stuff(sender: AnyObject) {
+        print("Hello world " + inputField.text!)
         
         if (inputField.text != "") {
             
-            let answer:Int = Int(inputField.text!)!
+            let guess:Int = Int(inputField.text!)!
             
-            if (answer <= 5) {
+            if (guess <= 5 && guess >= 1) {
                 
-                var guess:Int = Int(rand(5))!
+                let answer = arc4random_uniform(5) + 1
                 
-                if (guess == answer) {
-                    answerBox.text = "Congratulations! Your guess of /(guess) was correct!"
+                print("Answer: \(answer)")
+                print("guess: \(guess)")
+                
+                if (Int(answer) == guess) {
+                    answerBox.text = "Your guess of \(guess) was correct!"
                 } else {
-                    answerBox.text = "Sorry, I guessed /(answer) and you guessed /(guess)."
+                    answerBox.text = "Sorry, I picked \(answer) and you guessed \(guess)."
                 }
                 
+                inputField.text = ""
+                
             } else {
-                answerBox.text = "Your answer must be equal to or less than 5"
+                answerBox.text = "Your answer must be between 1 and 5"
             }
-        
+            
         }
-        
-        
-        
-        
-        
     }
     
 
