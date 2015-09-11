@@ -24,12 +24,12 @@ class ViewController: UIViewController {
             
             if (guess <= 5 && guess >= 1) {
                 
-                let answer = arc4random_uniform(5) + 1
+                let answer = Int(arc4random_uniform(5) + 1)
                 
                 print("Answer: \(answer)")
                 print("guess: \(guess)")
                 
-                if (Int(answer) == guess) {
+                if (answer == guess) {
                     answerBox.text = "Your guess of \(guess) was correct!"
                 } else {
                     answerBox.text = "Sorry, I picked \(answer) and you guessed \(guess)."
